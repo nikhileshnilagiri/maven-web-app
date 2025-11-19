@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage("git checkout"){
+            steps{
+                git branch:"main",url:"https://github.com/nikhileshnilagiri/maven-web-app"
+            }
+        }
+        stage("clean install test"){
+            steps{
+                bat "mvn clean"
+                bat "mvn install"
+                bat "mvn test"
+            }
+        }
+    }
+}
